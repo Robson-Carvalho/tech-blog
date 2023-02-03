@@ -5,7 +5,7 @@ import { Cards } from "../../components/cards";
 import { Container } from "./styles";
 
 export const Home = () => {
-  const [blogNews, setBlogNews] = useState([
+  const posts = [
     {
       id: crypto.randomUUID(),
       title: "Agora é oficial: o Windows 11 está vindo",
@@ -34,38 +34,27 @@ export const Home = () => {
       date: "02 de jul, 2021",
       isFavorite: false,
     },
-  ]);
+  ];
 
-  const [search, setSearch] = useState([]);
-
-  const [searchExists, setSearchExists] = useState(true);
+  const [search, setSearch] = useState(posts);
 
   const searchNews = (search) => {
-    const newBlogNews = blogNews.filter((blogNew) =>
-      blogNew.title.includes(search)
-    );
+    const lowerText = search.toLowerCase();
 
-    if (newBlogNews.length === 0) {
-      setSearchExists(false);
-      setSearch(newBlogNews);
+    const postSearch = posts.filter((post, index) => {
+      if (post.title.toLowerCase().includes(lowerText) === true) {
+        return posts[index];
+      }
       return;
-    }
-    setSearchExists(true);
-    setSearch(newBlogNews);
+    });
+
+    setSearch(postSearch);
   };
 
   return (
     <Container>
       <Header searchNews={searchNews} />
-      <Cards
-        blogNews={
-          search.length !== 0
-            ? search
-            : searchExists !== false
-            ? blogNews
-            : search
-        }
-      />
+      <Cards blogNews={search} />
     </Container>
   );
 };
