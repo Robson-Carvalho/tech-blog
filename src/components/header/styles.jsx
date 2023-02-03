@@ -31,7 +31,57 @@ export const Nav = styled.nav`
       line-height: 22px;
       /* identical to box height */
 
-      color: #ffffff;
+      color: #fff;
+    }
+  }
+  form {
+    width: 100%;
+    height: 40px;
+    padding: 11px 9.19px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 13.19px;
+
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+
+    input {
+      flex-grow: 1;
+      outline: none;
+      background-color: transparent;
+      border: none;
+
+      color: #fff;
+
+      &::placeholder {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        /* identical to box height */
+
+        color: #fff;
+
+        opacity: 0.5;
+      }
+    }
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 15.63px;
+        height: 15.63px;
+      }
     }
   }
 `;
